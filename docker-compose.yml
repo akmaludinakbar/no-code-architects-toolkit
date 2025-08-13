@@ -23,7 +23,7 @@ services:
   ncat:
     image: stephengpope/no-code-architects-toolkit:latest
     env_file:
-      # - .env
+      - stack.env
     labels:
       - traefik.enable=true
       - traefik.http.routers.ncat.rule=Host(`${APP_DOMAIN}`)
