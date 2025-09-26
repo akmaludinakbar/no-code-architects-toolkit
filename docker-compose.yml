@@ -17,7 +17,7 @@ services:
       - MINIO_BUCKET_NAME=${MINIO_BUCKET_NAME}
       - MINIO_SECURE=${MINIO_SECURE}
     volumes:
-      - local_files:/files # Changed this line
+      - local_files:/files
       - n8n_data:/home/node/.n8n
     networks:
       - traefik_proxy
@@ -66,8 +66,7 @@ services:
   create-minio-bucket:
     image: minio/mc
     depends_on:
-      minio:
-        condition: service_healthy
+      - minio # <-- ✅ CORRECT SYNTAX (Simple List format)
     entrypoint: >
       /bin/sh -c "
       sleep 10;
@@ -82,7 +81,7 @@ services:
 volumes:
   n8n_data:
   minio_data:
-  local_files: {} # Added this line
+  local_files: {}
 
 networks:
   traefik_proxy:
