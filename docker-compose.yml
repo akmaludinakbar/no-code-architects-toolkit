@@ -66,8 +66,8 @@ services:
   create-minio-bucket:
     image: minio/mc
     depends_on:
-      minio:
-        condition: service_healthy # Wait for minio to be healthy before starting
+      minio: # <-- Corrected this section to the proper format
+        condition: service_healthy
     entrypoint: >
       /bin/sh -c "
       /usr/bin/mc alias set minio http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD};
