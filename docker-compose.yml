@@ -52,7 +52,7 @@ services:
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
     ports:
       - "9000:9000"
-      - "9001:9001"
+      - "9002:9001" # <- CHANGED THIS LINE to resolve the port conflict
     volumes:
       - minio_data:/data
     networks:
